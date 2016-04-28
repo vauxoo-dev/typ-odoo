@@ -604,7 +604,7 @@
             </field>
         </record>
 
-        <menuitem action="fleet_vehicle_odometer_act" parent="fleet_vehicles" id="fleet_vehicle_odometer_menu" groups="group_fleet_user"/>
+        <menuitem action="fleet_vehicle_odometer_act" parent="fleet_vehicles" id="fleet_vehicle_odometer_menu" groups="fleet.group_fleet_user"/>
 
         <record model='ir.ui.view' id='fleet_vehicle_log_fuel_form'>
             <field name="name">fleet.vehicle.log.fuel.form</field>

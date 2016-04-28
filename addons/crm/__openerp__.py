@@ -61,9 +61,9 @@ Dashboard for CRM will include:
         'fetchmail'
     ],
     'data': [
-        'crm_data.xml',
-        'crm_lead_data.xml',
-        'crm_phonecall_data.xml',
+        #'crm_data.xml',
+        #'crm_lead_data.xml',
+        #'crm_phonecall_data.xml',
 
         'security/crm_security.xml',
         'security/ir.model.access.csv',

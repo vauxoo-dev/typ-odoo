@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 00:10+0000\n"
-"PO-Revision-Date: 2014-08-14 00:10+0000\n"
+"POT-Creation-Date: 2013-06-07 19:36+0000\n"
+"PO-Revision-Date: 2013-06-07 19:36+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:458
+#: code:addons/base_import/static/src/js/import.js:451
 #, python-format
 msgid "Get all possible values"
 msgstr ""
@@ -51,7 +51,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:337
+#: code:addons/base_import/static/src/js/import.js:331
 #, python-format
 msgid "Relation Fields"
 msgstr ""
@@ -182,9 +182,9 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:488
+#: code:addons/base_import/static/src/xml/import.xml:15
 #, python-format
-msgid "No matches found"
+msgid "Validate"
 msgstr ""
 
 #. module: base_import
@@ -295,7 +295,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:180
+#: code:addons/base_import/static/src/js/import.js:174
 #, python-format
 msgid "Semicolon"
 msgstr ""
@@ -337,7 +337,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:181
+#: code:addons/base_import/static/src/js/import.js:175
 #, python-format
 msgid "Tab"
 msgstr ""
@@ -456,7 +456,7 @@ msgid "base_import.tests.models.char.required"
 msgstr ""
 
 #. module: base_import
-#: code:addons/base_import/models.py:113
+#: code:addons/base_import/models.py:112
 #, python-format
 msgid "Database ID"
 msgstr ""
@@ -546,7 +546,7 @@ msgid "The tags should be separated by a comma without any \n"
 msgstr ""
 
 #. module: base_import
-#: code:addons/base_import/models.py:265
+#: code:addons/base_import/models.py:264
 #, python-format
 msgid "You must configure at least one field to import"
 msgstr ""
@@ -580,7 +580,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:79
+#: code:addons/base_import/static/src/js/import.js:74
 #, python-format
 msgid "Quoting:"
 msgstr ""
@@ -607,19 +607,21 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:445
+#: code:addons/base_import/static/src/js/import.js:438
 #, python-format
 msgid "Here are the possible values:"
 msgstr ""
 
 #. module: base_import
-#: field:base_import.import,res_model:0
-msgid "Model"
+#. openerp-web
+#: code:addons/base_import/static/src/xml/import.xml:82
+#, python-format
+msgid "The"
 msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:254
+#: code:addons/base_import/static/src/js/import.js:248
 #, python-format
 msgid "A single column was found in the file, this often means the file separator is incorrect"
 msgstr ""
@@ -687,13 +689,6 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/xml/import.xml:82
-#, python-format
-msgid "The"
-msgstr ""
-
-#. module: base_import
-#. openerp-web
 #: code:addons/base_import/static/src/xml/import.xml:288
 #, python-format
 msgid "As an example, suppose you have a SQL database \n"
@@ -706,14 +701,9 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/xml/import.xml:329
+#: code:addons/base_import/static/src/js/import.js:427
 #, python-format
-msgid "The two files produced are ready to be imported in \n"
-"                        OpenERP without any modifications. After having \n"
-"                        imported these two CSV files, you will have 4 contacts \n"
-"                        and 3 companies. (the firsts two contacts are linked \n"
-"                        to the first company). You must first import the \n"
-"                        companies and then the persons."
+msgid "(%d more)"
 msgstr ""
 
 #. module: base_import
@@ -725,7 +715,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:77
+#: code:addons/base_import/static/src/js/import.js:72
 #, python-format
 msgid "Encoding:"
 msgstr ""
@@ -746,9 +736,10 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:489
+#: code:addons/base_import/static/src/xml/import.xml:295
 #, python-format
-msgid "Loading more results..."
+msgid "We will first export all companies and their \n"
+"                        \"External ID\". In PSQL, write the following command:"
 msgstr ""
 
 #. module: base_import
@@ -761,7 +752,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:411
+#: code:addons/base_import/static/src/js/import.js:404
 #, python-format
 msgid "Everything seems valid."
 msgstr ""
@@ -778,16 +769,9 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:428
+#: code:addons/base_import/static/src/js/import.js:421
 #, python-format
 msgid "at row %d"
-msgstr ""
-
-#. module: base_import
-#. openerp-web
-#: code:addons/base_import/static/src/xml/import.xml:15
-#, python-format
-msgid "Validate"
 msgstr ""
 
 #. module: base_import
@@ -885,7 +869,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:182
+#: code:addons/base_import/static/src/js/import.js:176
 #, python-format
 msgid "Space"
 msgstr ""
@@ -930,14 +914,6 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/xml/import.xml:295
-#, python-format
-msgid "We will first export all companies and their \n"
-"                        \"External ID\". In PSQL, write the following command:"
-msgstr ""
-
-#. module: base_import
-#. openerp-web
 #: code:addons/base_import/static/src/xml/import.xml:169
 #, python-format
 msgid "CSV file for categories"
@@ -945,7 +921,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:336
+#: code:addons/base_import/static/src/js/import.js:330
 #, python-format
 msgid "Normal Fields"
 msgstr ""
@@ -982,8 +958,8 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:179
-#: code:addons/base_import/static/src/js/import.js:190
+#: code:addons/base_import/static/src/js/import.js:173
+#: code:addons/base_import/static/src/js/import.js:184
 #, python-format
 msgid "Comma"
 msgstr ""
@@ -1013,10 +989,8 @@ msgid "person_3,Eric,False,company_2"
 msgstr ""
 
 #. module: base_import
-#. openerp-web
-#: code:addons/base_import/static/src/js/import.js:490
-#, python-format
-msgid "Searching..."
+#: field:base_import.import,res_model:0
+msgid "Model"
 msgstr ""
 
 #. module: base_import
@@ -1029,9 +1003,14 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:434
+#: code:addons/base_import/static/src/xml/import.xml:329
 #, python-format
-msgid "(%d more)"
+msgid "The two files produced are ready to be imported in \n"
+"                        OpenERP without any modifications. After having \n"
+"                        imported these two CSV files, you will have 4 contacts \n"
+"                        and 3 companies. (the firsts two contacts are linked \n"
+"                        to the first company). You must first import the \n"
+"                        companies and then the persons."
 msgstr ""
 
 #. module: base_import
@@ -1048,7 +1027,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:78
+#: code:addons/base_import/static/src/js/import.js:73
 #, python-format
 msgid "Separator:"
 msgstr ""
@@ -1060,8 +1039,8 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/models.py:81
-#: code:addons/base_import/models.py:112
+#: code:addons/base_import/models.py:80
+#: code:addons/base_import/models.py:111
 #: code:addons/base_import/static/src/xml/import.xml:77
 #: code:addons/base_import/static/src/xml/import.xml:82
 #, python-format
@@ -1077,7 +1056,7 @@ msgstr ""
 
 #. module: base_import
 #. openerp-web
-#: code:addons/base_import/static/src/js/import.js:430
+#: code:addons/base_import/static/src/js/import.js:423
 #, python-format
 msgid "between rows %d and %d"
 msgstr ""

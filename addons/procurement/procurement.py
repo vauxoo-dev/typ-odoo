@@ -186,6 +186,11 @@ class procurement_order(osv.osv):
         """ Checks if move is done or not.
         @return: True or False.
         """
+        res = all(proc.product_id.type == 'service' or (proc.move_id and proc.move_id.state == 'done') \
+                    for proc in self.browse(cr, uid, ids, context=context))
+        
+        #print res
+            
         return all(proc.product_id.type == 'service' or (proc.move_id and proc.move_id.state == 'done') \
                     for proc in self.browse(cr, uid, ids, context=context))
 

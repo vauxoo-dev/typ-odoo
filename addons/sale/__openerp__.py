@@ -33,7 +33,7 @@ This application allows you to manage your sales goals in an effective and effic
 
 It handles the full sales workflow:
 
-* **Quotation** -> **Sales order** -> **Invoice**
+* **Quotation** -> **Sales order** -> **InvLess-than-truckload freightoice**
 
 Preferences (only with Warehouse Management installed)
 ------------------------------------------------------

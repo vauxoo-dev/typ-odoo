@@ -35,9 +35,8 @@ class stock_picking(osv.osv):
             total_weight = total_weight_net = 0.00
 
             for move in picking.move_lines:
-                if move.state != 'cancel':
-                    total_weight += move.weight
-                    total_weight_net += move.weight_net
+                total_weight += move.weight
+                total_weight_net += move.weight_net
 
             res[picking.id] = {
                                 'weight': total_weight,
@@ -58,12 +57,12 @@ class stock_picking(osv.osv):
         'weight': fields.function(_cal_weight, type='float', string='Weight', digits_compute= dp.get_precision('Stock Weight'), multi='_cal_weight',
                   store={
                  'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 20),
-                 'stock.move': (_get_picking_line, ['state','product_id','product_qty','product_uom','product_uos_qty'], 20),
+                 'stock.move': (_get_picking_line, ['product_id','product_qty','product_uom','product_uos_qty'], 20),
                  }),
         'weight_net': fields.function(_cal_weight, type='float', string='Net Weight', digits_compute= dp.get_precision('Stock Weight'), multi='_cal_weight',
                   store={
                  'stock.picking': (lambda self, cr, uid, ids, c={}: ids, ['move_lines'], 20),
-                 'stock.move': (_get_picking_line, ['state','product_id','product_qty','product_uom','product_uos_qty'], 20),
+                 'stock.move': (_get_picking_line, ['product_id','product_qty','product_uom','product_uos_qty'], 20),
                  }),
         'carrier_tracking_ref': fields.char('Carrier Tracking Ref', size=32),
         'number_of_packages': fields.integer('Number of Packages'),
@@ -136,38 +135,15 @@ class stock_picking(osv.osv):
         return result
     def _get_default_uom(self,cr,uid,c):
         uom_categ, uom_categ_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'product', 'product_uom_categ_kgm')
-        return self.pool.get('product.uom').search(cr, uid, [('category_id', '=', uom_categ_id),('factor','=',1)])[0]
+	uom_id = self.pool.get('product.uom').search(cr, uid, [('category_id', '=', uom_categ_id),('factor','=',1)])
+	if uom_id:
+		return uom_id[0]
+	return False
     _defaults = {
         'weight_uom_id': lambda self,cr,uid,c: self._get_default_uom(cr,uid,c)
     }
 
-    def copy(self, cr, uid, id, default=None, context=None):
-        default = dict(default or {},
-            number_of_packages=0,
-            carrier_tracking_ref=False,
-            volume=0.0)
-        return super(stock_picking, self).copy(cr, uid, id, default=default, context=context)
-
-    def do_partial(self, cr, uid, ids, partial_datas, context=None):
-        res = super(stock_picking, self).do_partial(cr, uid, ids, partial_datas, context=context)
-        for backorder_id, picking_vals in res.iteritems():
-            if backorder_id != picking_vals.get('delivered_picking'):
-                # delivery info is set on backorder but not on new picking
-                backorder = self.browse(cr, uid, backorder_id, context=context)
-                self.write(cr, uid, picking_vals['delivered_picking'], {
-                    'carrier_tracking_ref': backorder.carrier_tracking_ref,
-                    'number_of_packages': backorder.number_of_packages,
-                    'volume': backorder.volume,
-                }, context=context)
-                # delivery info are not relevant to backorder
-                self.write(cr, uid, backorder_id, {
-                    'carrier_tracking_ref': False,
-                    'number_of_packages': 0,
-                    'volume': 0,
-                }, context=context)
-
-        return res
-
+stock_picking()
 
 class stock_move(osv.osv):
     _inherit = 'stock.move'
@@ -194,17 +170,6 @@ class stock_move(osv.osv):
                             }
         return res
 
-    def _prepare_chained_picking(self, cr, uid, picking_name, picking, picking_type, moves_todo, context=None):
-        values = super(stock_move, self)._prepare_chained_picking(cr, uid, picking_name, picking, picking_type, moves_todo, context=context)
-        if picking.carrier_id:
-            values['carrier_id'] = picking.carrier_id.id
-        values['volume'] = picking.volume
-        values['weight'] = picking.weight
-        values['weight_net'] = picking.weight_net
-        values['carrier_tracking_ref'] = picking.carrier_tracking_ref
-        values['number_of_packages'] = picking.number_of_packages
-        return values
-
     _columns = {
         'weight': fields.function(_cal_move_weight, type='float', string='Weight', digits_compute= dp.get_precision('Stock Weight'), multi='_cal_move_weight',
                   store={
@@ -218,7 +183,11 @@ class stock_move(osv.osv):
         }
     def _get_default_uom(self,cr,uid,c):
         uom_categ, uom_categ_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'product', 'product_uom_categ_kgm')
-        return self.pool.get('product.uom').search(cr, uid, [('category_id', '=', uom_categ_id),('factor','=',1)])[0]
+        uom_id = self.pool.get('product.uom').search(cr, uid, [('category_id', '=', uom_categ_id),('factor','=',1)])
+	if uom_id:
+		return uom_id[0]
+	return False
+
     _defaults = {
         'weight_uom_id': lambda self,cr,uid,c: self._get_default_uom(cr,uid,c)
     }

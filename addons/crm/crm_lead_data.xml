@@ -2,7 +2,7 @@
 <openerp>
     <data noupdate="1">
 
-        <!-- Crm stages -->
+        <!-- Crm stages 
         <record model="crm.case.stage" id="stage_lead1">
             <field name="name">New</field>
             <field eval="1" name="case_default"/>
@@ -78,8 +78,8 @@
                                             (4, ref('stage_lead5')), (4, ref('stage_lead6')),
                                             (4, ref('stage_lead7')), (4, ref('stage_lead8'))]"/>
         </record>
-
-        <!-- Crm campain -->
+-->
+        <!-- Crm campain 
         <record model="crm.case.resource.type" id="type_lead1">
             <field name="name">Telesales</field>
             <field name="section_id" ref="section_sales_department"/>
@@ -112,8 +112,8 @@
             <field name="name">Newsletter</field>
             <field name="section_id" ref="section_sales_department"/>
         </record>
-
-        <!--  crm categories -->
+-->
+        <!--  crm categories 
         <record model="crm.case.categ" id="categ_oppor1">
             <field name="name">Product</field>
             <field name="section_id" ref="section_sales_department"/>
@@ -154,8 +154,8 @@
             <field name="section_id" ref="section_sales_department"/>
             <field name="object_id" search="[('model','=','crm.lead')]" model="ir.model"/>
         </record>
-
-        <!-- CRM-related subtypes for messaging / Chatter -->
+-->
+        <!-- CRM-related subtypes for messaging / Chatter 
         <record id="mt_lead_create" model="mail.message.subtype">
             <field name="name">Lead Created</field>
             <field name="res_model">crm.lead</field>
@@ -186,7 +186,8 @@
             <field name="default" eval="False"/>
             <field name="description">Opportunity lost</field>
         </record>
-        <!-- Salesteam-related subtypes for messaging / Chatter -->
+        -->
+        <!-- Salesteam-related subtypes for messaging / Chatter 
         <record id="mt_salesteam_lead" model="mail.message.subtype">
             <field name="name">Lead Created</field>
             <field name="res_model">crm.case.section</field>
@@ -220,6 +221,6 @@
             <field name="parent_id" eval="ref('mt_lead_lost')"/>
             <field name="relation_field">section_id</field>
         </record>
-
+-->
     </data>
 </openerp>
